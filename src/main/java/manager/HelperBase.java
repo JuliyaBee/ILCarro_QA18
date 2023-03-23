@@ -18,7 +18,7 @@ public class HelperBase {
         wd.findElement(locator).click();
     }
     public void type(By locator, String text) {
-        if (text != null) {
+        if (text != null &&!text.isEmpty()) {
             WebElement element = wd.findElement(locator);
             element.click();
             element.clear();
