@@ -46,11 +46,14 @@ public class RegistrationTest extends TestBase{
               email(correctEmail).
               password(correctPassword).
                build();
+      logger.info("registrationPositiveTest starts with: "+user.getEmail()+" & "+user.getPassword());
       app.getUser().openRegistrationForm();
       app.getUser().fillRegistrationForm(user);
       app.getUser().clickCheckBox();
       app.getUser().submitForm();
-    //  Assert.assertTrue(app.getUser().isRegistrationSuccess());
+
+        logger.info("registrationPositiveTest completed");
+      Assert.assertTrue(app.getUser().isRegistratedSuccess());
 
     }
 @Test
@@ -83,6 +86,9 @@ public class RegistrationTest extends TestBase{
 
 
     }
-
+@AfterMethod
+    public void postCondition(){
+        app.getUser().clickOkButton();
+}
 
 }
